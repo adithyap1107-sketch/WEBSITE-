@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: agrishare
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 3000
+      - key: DB_PATH
+        value: /opt/render/project/src/backend/db/agrishare.db
+    disk:
+      name: agrishare-db
+      mountPath: /opt/render/project/src/backend/db
+      sizeGB: 1
